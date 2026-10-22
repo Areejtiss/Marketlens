@@ -12,17 +12,7 @@ def download_market_data(
     end_date: str,
     output_dir: Optional[Path] = None,
 ) -> pd.DataFrame:
-    """Download daily historical stock data from Yahoo Finance.
-
-    Args:
-        tickers: List of ticker symbols (e.g., ['AAPL', 'MSFT']).
-        start_date: Start date string (YYYY-MM-DD).
-        end_date: End date string (YYYY-MM-DD).
-        output_dir: Optional directory path to save raw CSV files.
-
-    Returns:
-        pd.DataFrame: Downloaded market data.
-    """
+    """Download daily historical stock data from Yahoo Finance."""
     print(f"Downloading data for {tickers} from {start_date} to {end_date}...")
 
     df = yf.download(
@@ -35,9 +25,10 @@ def download_market_data(
     )
 
     if df.empty:
-        raise ValueError("No data returned. Check ticker symbols and date range.")
+        raise ValueError(
+            "No data returned. Check ticker symbols and date range."
+        )
 
-    # Save raw snapshot if output directory is provided
     if output_dir:
         output_path = Path(output_dir)
         output_path.mkdir(parents=True, exist_ok=True)
@@ -49,14 +40,7 @@ def download_market_data(
 
 
 def load_local_csv(file_path: Path) -> pd.DataFrame:
-    """Load stock data from a local CSV file.
-
-    Args:
-        file_path: Path to the CSV file.
-
-    Returns:
-        pd.DataFrame: Loaded dataset.
-    """
+    """Load stock data from a local CSV file."""
     file_path = Path(file_path)
     if not file_path.exists():
         raise FileNotFoundError(f"Local file not found at {file_path}")
