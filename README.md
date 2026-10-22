@@ -1,6 +1,4 @@
 
-Voici un **`README.md`** complet, professionnel et visuellement structuré pour mettre en valeur votre projet **MarketLens** sur GitHub :
-
 ```markdown
 # MarketLens 📈
 
