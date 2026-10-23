@@ -4,17 +4,26 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "marketlens"
-version = "0.1.0"
-description = "Quantitative Financial Pipeline & Portfolio Optimization"
+version = "0.2.0"
+description = "Mean-variance portfolio optimization, risk metrics and walk-forward backtesting"
 readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = [
-    "pandas",
-    "numpy",
-    "yfinance",
-    "scipy",
-    "matplotlib"
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+    "yfinance>=0.2.30",
 ]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.3"]
+notebooks = ["jupyter", "seaborn>=0.12"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
